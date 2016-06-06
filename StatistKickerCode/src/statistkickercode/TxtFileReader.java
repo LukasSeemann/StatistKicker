@@ -11,4 +11,8 @@ package statistkickercode;
  */
 public class TxtFileReader {
     
+    public void sayHello(){
+        System.out.println("Hallo");
+    }
+    
 }
