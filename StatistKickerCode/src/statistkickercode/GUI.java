@@ -23,5 +23,9 @@ public class GUI {
 	public void showGUI(){
 		
 	}
+        
+        public void test(){
+            
+        }
 	
 }
