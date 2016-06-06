@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="StatistKicker">
+  <ClassDiagramComponents>
+    <Class name="Main" package="" visibility="public" xPosition="1030.0" yPosition="321.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="main" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="GUI" package="" visibility="public" xPosition="409.0" yPosition="14.0">
+      <Fields>
+        <Field name="spieldaten" type="Spieldaten" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="showGUI" returnType="void" visibility="public"/>
+        <Method name="showSpielfeld" returnType="Zustand" visibility="public">
+          <Argument type="Zustand" name="zustand"/>
+        </Method>
+        <Method name="showHeatmap" returnType="Heatmap" visibility="public">
+          <Argument type="Heatmap" name="heatmap"/>
+        </Method>
+        <Method name="showSpielstand" returnType="Zustand" visibility="public">
+          <Argument type="Zustand" name="zustand"/>
+        </Method>
+        <Method name="showStatistiken" returnType="Zustand" visibility="public">
+          <Argument type="Zustand" name="zustand"/>
+        </Method>
+        <Method name="play" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Spieldaten" package="" visibility="public" xPosition="460.0" yPosition="295.0">
+      <Fields>
+        <Field name="spielverlauf" type="List&lt;Zustand&gt;" visibility="private"/>
+        <Field name="statGen" type="StatistikGenerator" visibility="private"/>
+        <Field name="heatmap" type="Heatmap" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="Heatmap" package="" visibility="public" xPosition="127.0" yPosition="128.0">
+      <Fields>
+        <Field name="felder" type="int[][]" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="StatistikGenerator" package="" visibility="public" xPosition="23.0" yPosition="286.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="getAnzahlSchuesse" returnType="int" visibility="public">
+          <Argument type="Boolean" name="team"/>
+          <Argument type="int" name="Zeitpunkt"/>
+        </Method>
+        <Method name="getBallgeschwindigkeit" returnType="int" visibility="public">
+          <Argument type="int" name="zeitpunkt"/>
+        </Method>
+        <Method name="getSpielstand" returnType="int" visibility="public">
+          <Argument type="int" name="zeitpunkt"/>
+        </Method>
+        <Method name="generateHeatMap" returnType="List&lt;Zustand&gt;" visibility="public">
+          <Argument type="List&lt;Zustand&gt;" name="spielverlauf"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="TxtFileReader" package="" visibility="public" xPosition="467.0" yPosition="514.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="check" returnType="boolean" visibility="public"/>
+        <Method name="leseNormal" returnType="void" visibility="public"/>
+        <Method name="leseTor" returnType="void" visibility="public"/>
+        <Method name="readTxtFile" returnType="Spieldaten" visibility="public"/>
+        <Method name="leseMetadaten" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Zustand" package="" visibility="public" xPosition="740.0" yPosition="276.0">
+      <Fields>
+        <Field name="stangePosition" type="Point[]" visibility="private"/>
+        <Field name="ballPosition" type="Point" visibility="private"/>
+        <Field name="zeitpunkt" type="int" visibility="private"/>
+        <Field name="toreTeam1" type="int" visibility="private"/>
+        <Field name="toreTeam2" type="int" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <HasRelation name="bidirektional" source="GUI" target="Spieldaten" type="Aggregation" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <HasRelation name="erzeugt" source="Main" target="TxtFileReader" type="Default" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <HasRelation name="besteht aus" source="Spieldaten" target="Zustand" type="Composition" sourceCardinality="0..1" targetCardinality="1..*" collectionType="List"/>
+    <HasRelation name="bidirektional" source="Spieldaten" target="StatistikGenerator" type="Default" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <HasRelation name="erzeugt" source="TxtFileReader" target="Spieldaten" type="Default" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <HasRelation name="bidirektional" source="Spieldaten" target="Heatmap" type="Default" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <HasRelation name="erzeugt" source="StatistikGenerator" target="Heatmap" type="Default" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <HasRelation name="erzeugt" source="Main" target="GUI" type="Default" sourceCardinality="0..1" targetCardinality="1..1"/>
+  </ClassDiagramRelations>
+</ClassDiagram>
