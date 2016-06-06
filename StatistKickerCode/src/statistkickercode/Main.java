@@ -9,13 +9,14 @@ package statistkickercode;
  *
  * @author Lukas
  */
-public class StatistKickerCode {
+public class Main {
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        GUI gui = new GUI();
+        TxtFileReader txtreader = new TxtFileReader();
     }
     
 }
