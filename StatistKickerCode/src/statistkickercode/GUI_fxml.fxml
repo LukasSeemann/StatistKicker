@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <SplitPane dividerPositions="0.18, 0.82" prefHeight="500.0" prefWidth="700.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+               <children>
+                  <TextField layoutX="32.0" layoutY="14.0" prefHeight="25.0" prefWidth="59.0" text="TEAM 1" />
+                  <TableView layoutY="54.0" prefHeight="444.0" prefWidth="123.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="54.0">
+                    <columns>
+                      <TableColumn minWidth="0.0" prefWidth="89.0" text="Statistiken" />
+                      <TableColumn prefWidth="34.0" text="#" />
+                    </columns>
+                  </TableView>
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="498.0" prefWidth="187.0">
+               <children>
+                  <Text layoutX="171.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0 - 0">
+                     <font>
+                        <Font size="48.0" />
+                     </font>
+                  </Text>
+                  <Button layoutX="14.0" layoutY="424.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="92.0" text="HeatMap" />
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#4bff1f3b" height="225.0" layoutX="7.0" layoutY="137.0" stroke="BLACK" width="426.0" AnchorPane.rightAnchor="6.5" />
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#48ff1fad" height="88.0" layoutX="7.0" layoutY="206.0" stroke="BLACK" strokeType="INSIDE" width="50.0" />
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#48ff1fad" height="88.0" layoutX="383.0" layoutY="206.0" stroke="BLACK" strokeType="INSIDE" width="50.0" />
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="225.0" layoutX="219.0" layoutY="137.0" stroke="BLACK" strokeType="INSIDE" width="2.0" />
+               </children>
+            </AnchorPane>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="498.0" prefWidth="151.0">
+               <children>
+                  <TextField layoutX="32.0" layoutY="14.0" prefHeight="25.0" prefWidth="59.0" text="TEAM 2" />
+                  <TableView layoutY="54.0" prefHeight="444.0" prefWidth="123.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="54.0">
+                     <columns>
+                        <TableColumn minWidth="0.0" prefWidth="89.0" text="Statistiken" />
+                        <TableColumn prefWidth="34.0" text="#" />
+                     </columns>
+                  </TableView>
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+   </children>
+</AnchorPane>
