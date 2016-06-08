@@ -31,7 +31,7 @@
                      </font>
                   </Text>
                   <Button layoutX="14.0" layoutY="424.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="92.0" text="HeatMap" />
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#4bff1f3b" height="225.0" layoutX="7.0" layoutY="137.0" stroke="BLACK" width="426.0" AnchorPane.rightAnchor="6.5" />
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#4bff1f3b" height="225.0" layoutX="7.0" layoutY="137.0" stroke="BLACK" strokeType="INSIDE" width="426.0" />
                   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#48ff1fad" height="88.0" layoutX="7.0" layoutY="206.0" stroke="BLACK" strokeType="INSIDE" width="50.0" />
                   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#48ff1fad" height="88.0" layoutX="383.0" layoutY="206.0" stroke="BLACK" strokeType="INSIDE" width="50.0" />
                   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="225.0" layoutX="219.0" layoutY="137.0" stroke="BLACK" strokeType="INSIDE" width="2.0" />
