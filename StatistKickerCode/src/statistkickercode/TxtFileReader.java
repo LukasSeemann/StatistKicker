@@ -22,6 +22,7 @@ import java.util.Scanner;
 public class TxtFileReader {
         
     File file;
+    int toreTeam1, toreTeam2;
 
     public TxtFileReader(){
         readTxtFile();
@@ -33,7 +34,7 @@ public class TxtFileReader {
     }
     
     public void leseMetaDaten(){
-        System.out.println("Lese MetaDaten");
+        
     }
     
     public void leseNormal(Zustand zustand, String daten){
@@ -53,9 +54,11 @@ public class TxtFileReader {
     public void leseTor(Zustand zustand, String daten){
         System.out.println("Lese Tor");
         if(daten.startsWith("True")){
-            zustand.setToreTeam1(1);
+            setToreTeam1();
+            zustand.setToreTeam1(getToreTeam1());
         }else{
-            zustand.setToreTeam2(1);
+            setToreTeam2();
+            zustand.setToreTeam2(getToreTeam2());
         }
     }
     
@@ -69,6 +72,7 @@ public class TxtFileReader {
             List<Zustand> zustaende = new ArrayList<Zustand>();
             for(int i = 0; scan.hasNext();i++){
                 Zustand zustand = new Zustand();
+                zustand.setZeitpunkt(i); // Hier wird beim Zeitpunkt 0 begonne !!
                 String test = scan.next();
                 if(test.startsWith("True") || test.startsWith("false")){
                     leseTor(zustand, test);
@@ -83,14 +87,34 @@ public class TxtFileReader {
                 }
                 zustaende.add(zustand);
             }
+            Spieldaten spieldaten = new Spieldaten();
+            spieldaten.setSpielverlauf(zustaende);
         }catch(FileNotFoundException fnoe){
                 fnoe.printStackTrace();
         }
         return null;
     }
     
-    public boolean check(){
+    public boolean check(File file){
         return true;
     }
     
+    
+    // Getter und Setter
+    public int getToreTeam1() {
+        return toreTeam1;
+    }
+
+    public void setToreTeam1() {
+        this.toreTeam1++;
+    }
+
+    public int getToreTeam2() {
+        return toreTeam2;
+    }
+
+    public void setToreTeam2() {
+        this.toreTeam2++;
+    }
+
 }
