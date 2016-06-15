@@ -7,6 +7,12 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
 
 <AnchorPane prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
@@ -25,16 +31,27 @@
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="498.0" prefWidth="187.0">
                <children>
-                  <Text layoutX="171.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0 - 0">
-                     <font>
-                        <Font size="48.0" />
-                     </font>
-                  </Text>
-                  <Button layoutX="14.0" layoutY="424.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="92.0" text="HeatMap" />
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#4bff1f3b" height="225.0" layoutX="7.0" layoutY="137.0" stroke="BLACK" strokeType="INSIDE" width="426.0" />
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#48ff1fad" height="88.0" layoutX="7.0" layoutY="206.0" stroke="BLACK" strokeType="INSIDE" width="50.0" />
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#48ff1fad" height="88.0" layoutX="383.0" layoutY="206.0" stroke="BLACK" strokeType="INSIDE" width="50.0" />
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="225.0" layoutX="219.0" layoutY="137.0" stroke="BLACK" strokeType="INSIDE" width="2.0" />
+                  <BorderPane layoutX="120.0" layoutY="139.0" prefHeight="498.0" prefWidth="440.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <center>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1fff2a68" height="193.0" stroke="BLACK" strokeType="INSIDE" width="412.0" BorderPane.alignment="CENTER" />
+                     </center>
+                     <bottom>
+                        <Button mnemonicParsing="false" prefHeight="48.0" prefWidth="92.0" text="HeatMap" BorderPane.alignment="BOTTOM_LEFT">
+                           <BorderPane.margin>
+                              <Insets bottom="10.0" left="10.0" />
+                           </BorderPane.margin>
+                        </Button>
+                     </bottom>
+                  </BorderPane>
+                  <BorderPane prefHeight="92.0" prefWidth="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                     <center>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="0 - 0" BorderPane.alignment="CENTER">
+                           <font>
+                              <Font size="48.0" />
+                           </font>
+                        </Text>
+                     </center>
+                  </BorderPane>
                </children>
             </AnchorPane>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="498.0" prefWidth="151.0">
