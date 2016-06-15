@@ -22,6 +22,7 @@ import java.util.Scanner;
 public class TxtFileReader {
         
     File file;
+    Scanner scan;
     int toreTeam1, toreTeam2;
 
     public TxtFileReader(){
@@ -34,7 +35,7 @@ public class TxtFileReader {
     }
     
     public void leseMetaDaten(){
-        
+        System.out.println("Lese Metadaten");
     }
     
     public void leseNormal(Zustand zustand, String daten){
@@ -42,15 +43,20 @@ public class TxtFileReader {
         String[] werte = daten.split(",");
         zustand.setBallPosition(new Point(Integer.parseInt(werte[0]), Integer.parseInt(werte[1])));
         System.out.println(zustand.getBallPosition());
-        for(int i = 2; i <= werte.length; i++){
-            if(i%2 == 0){
-                
-            }else{
-                
-            }
+        /*
+        Point[] stangen = new Point[8];
+        for(int i = 0; i <= werte.length; i=i+2){
+            stangen[i] = new Point(Integer.parseInt(werte[i+2]), Integer.parseInt(werte[i+3]));
         }
+        zustand.setStangePosition(stangen);
+        */
     }
     
+    /**
+     * Diese Methode trägt in einen Zustand ein, wann ein Tor gefallen ist
+     * @param zustand der zustand in den eingetragen werden soll
+     * @param daten entweder True oder False, je nachdem welches Team ein Tor geschossen hat
+     */
     public void leseTor(Zustand zustand, String daten){
         System.out.println("Lese Tor");
         if(daten.startsWith("True")){
@@ -68,22 +74,26 @@ public class TxtFileReader {
     
     public Spieldaten readTxtFile(){
         try{
-            Scanner scan = new Scanner(getFile());
+            scan = new Scanner(getFile());
             List<Zustand> zustaende = new ArrayList<Zustand>();
             for(int i = 0; scan.hasNext();i++){
                 Zustand zustand = new Zustand();
-                zustand.setZeitpunkt(i); // Hier wird beim Zeitpunkt 0 begonne !!
-                String test = scan.next();
-                if(test.startsWith("True") || test.startsWith("false")){
-                    leseTor(zustand, test);
-                }else if(test.startsWith("End")){
+                zustand.setZeitpunkt(i); 
+                String line = scan.next();
+                if(!(checkLineOk(line))){
+                    System.out.println("Datei nicht in Ordnung");
+                    break;
+                }
+                if(line.startsWith("True") || line.startsWith("False")){
+                    leseTor(zustand, line);
+                }else if(line.startsWith("End")){
                     leseEnde();
-                }else if(test.startsWith("Header")){
+                }else if(line.startsWith("Header")){
                     leseMetaDaten();
-                }else if(test.startsWith("Werte")){
-                    
+                }else if(line.startsWith("Werte")){
+                    System.out.println("Nun werden die Zustände eingelesen");
                 }else{
-                    leseNormal(zustand, test);
+                    leseNormal(zustand, line);
                 }
                 zustaende.add(zustand);
             }
@@ -95,7 +105,15 @@ public class TxtFileReader {
         return null;
     }
     
-    public boolean check(File file){
+    /**
+     * Methode liefert True zurück, wenn die Zeile Fehlerwerte enthält
+     * @param file
+     * @return 
+     */
+    public boolean checkLineOk(String line){
+        if(line.startsWith("-1")){
+            return false;
+        }
         return true;
     }
     
