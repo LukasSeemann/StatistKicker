@@ -45,23 +45,14 @@ public class TxtFileReader {
                     leseTor(line);
                 }else if(line.startsWith("End")){
                     leseEnde();
-                    continue;
                 }else if(line.startsWith("Header")){
                     leseMetaDaten();
-                    continue;
                 }else if(line.startsWith("Werte")){
                     System.out.println("Nun werden die Zustände eingelesen");
-                    continue;
                 }else{
                     leseNormal(line);
+                    createNewZustand(i, zustaende);
                 }
-                Zustand zustand = new Zustand();
-                zustand.setZeitpunkt(i);
-                zustand.setBallPosition(getBallPosition());
-                zustand.setStangePosition(getStangePosition());
-                zustand.setToreTeam1(getToreTeam1());
-                zustand.setToreTeam2(getToreTeam2());
-                zustaende.add(zustand);
             }
             // Testlauf
             for(int i = 0; i<zustaende.size(); i++){
@@ -79,6 +70,17 @@ public class TxtFileReader {
                 fnoe.printStackTrace();
         }
         return null;
+    }
+
+    private void createNewZustand(int i, List<Zustand> zustaende) {
+        // Erstellung eines Zustand Objektes (in eigene Methode?)
+        Zustand zustand = new Zustand();
+        zustand.setZeitpunkt(i);
+        zustand.setBallPosition(getBallPosition());
+        zustand.setStangePosition(getStangePosition());
+        zustand.setToreTeam1(getToreTeam1());
+        zustand.setToreTeam2(getToreTeam2());
+        zustaende.add(zustand);
     }
     
     /**
