@@ -15,7 +15,7 @@ public class Spieldaten {
 	List<Zustand> spielverlauf;
 	StatistikGenerator statGen;
 	Heatmap heatmap;
-	
+        
 	public List<Zustand> getSpielverlauf() {
 		return spielverlauf;
 	}
