@@ -4,56 +4,93 @@
  * and open the template in the editor.
  */
 package statistkickercode;
-import java.io.IOException;
+
+import java.net.URL;
+import java.util.ResourceBundle;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
  
-import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
+
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
+import javafx.scene.shape.Circle;
+import javafx.scene.text.Text;
 /**
  *
  * @author Lukas
  */
-public class GUI extends Application{
-	Spieldaten spieldaten;
-	
-	public Spieldaten getSpieldaten() {
-		return spieldaten;
-	}
-
-	public void setSpieldaten(Spieldaten spieldaten) {
-		this.spieldaten = spieldaten;
-	}
-        
-    public void show(String[] args){
-        launch(args);
+public class GUI implements Initializable{
+    Spieldaten spieldaten;	
+    public Spieldaten getSpieldaten() {
+        return spieldaten;
     }
-   @Override
-    public void start(Stage primaryStage) throws IOException {
-        // +++++++++++++++++++++++++++++++++++++++++++++
-        // Layout
-        // +++++++++++++++++++++++++++++++++++++++++++++
-              
-        // FXML-Datei laden!
-        Parent root = FXMLLoader.load(getClass().getResource("GUI_fxml.fxml"));
-               
-        // Szene
-        Scene scene = new Scene(root);        
-             
-        // +++++++++++++++++++++++++++++++++++++++++++++
-        // Stage konfigurieren
-        // +++++++++++++++++++++++++++++++++++++++++++++
- 
-        // Titel setzen
-        primaryStage.setTitle("StatistKicker - Programm");
-             
-        // Szene setzen
-        primaryStage.setScene(scene);
-        primaryStage.sizeToScene();
-             
-        // Stage anzeigen
-        primaryStage.show();
-         }
-	
+
+    public void setSpieldaten(Spieldaten spieldaten) {
+	this.spieldaten = spieldaten;
+    }
+    
+   
+    int z = 0;
+    
+    @FXML Circle Ball;
+    @FXML Text Time;
+    @FXML Text S1;
+    @FXML Text SG1;
+    @FXML Text S2;
+    @FXML Text SG2;
+    @FXML Text Spielstand;
+    @FXML Text Speed;
+  
+    
+    @FXML
+    protected void vorButtonPressed() {
+        
+        z++; 
+        //Zustand aktuell = spieldaten.spielverlauf.get(z);
+        updateStatistics();
+        //updateBall(aktuell);
+        Ball.setLayoutX(Ball.getLayoutX()+Math.random()*10);
+        Ball.setLayoutY(Ball.getLayoutY()-Math.random()*10);
+        Time.setText("Zeitpunkt: "+z);    
+    }
+    
+    @FXML
+    protected void zurückButtonPressed() {
+        z--; 
+        //Zustand aktuell = spieldaten.spielverlauf.get(z);
+        updateStatistics();
+        //updateBall(aktuell);
+        Ball.setLayoutX(Ball.getLayoutX()-Math.random()*10);
+        Ball.setLayoutY(Ball.getLayoutY()+Math.random()*10);
+        Time.setText("Zeitpunkt: "+z);
+        
+    }
+
+    
+    @FXML
+    public void updateBall(Zustand akt){
+        Ball.setLayoutX(akt.ballPosition.getX());
+        Ball.setLayoutY(akt.ballPosition.getY());
+    }
+    public void updateStatistics(){
+         S1.setText(""+z);
+         //S1.setText(""+spieldaten.statGen.getAnzahlSchuesse(false, z));
+         SG1.setText(""+z);
+         S2.setText(""+z);
+         //S2.setText(""+spieldaten.statGen.getAnzahlSchuesse(true, z));
+         SG2.setText(""+z);
+         //Spielstand.setText(""+spieldaten.statGen.getSpielstand(z));
+         Spielstand.setText("1 - 1");
+         //Speed.setText(""+spieldaten.statGen.getBallgeschwindigkeit(z));
+         Speed.setText("" + (z+3.24));
+    }
+    
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        
+    }
 }
