@@ -28,8 +28,8 @@ public class StatistikGenerator {
         }
         //Die Zustandsliste wird ausgequetscht und geschaut, in welchem Bereich es liegt
         for(Zustand i : daten.spielverlauf){
-            int merkeX=(int)(i.getBallPosition().getX()/40);
-            int merkeY=(int)(i.getBallPosition().getY()/20);
+            int merkeX=(int)(i.getBallPosition().getX()/14);
+            int merkeY=(int)(i.getBallPosition().getY()/14);
             heatmap[merkeY][merkeX]=heatmap[merkeY][merkeX]+1;
         }
         
@@ -43,7 +43,7 @@ public class StatistikGenerator {
     //Die Geschwindigkeit wird daruch gemessen, dass wir den Punkt vor unserem Zeitpunkt und den Punkt nach unserem Zeitpunkt betrachten,
     //Die Distanz ausrechnen die er zurückgelegt hat und durch die anzahl der gemessenen Zeiteinheiten (2) teilen.
     public double geschwindigkeit(int zeitpunkt){
-        if(zeitpunkt > 1 && zeitpunkt <daten.getSpielverlauf().size()){
+        if(zeitpunkt >= 1 && zeitpunkt <daten.getSpielverlauf().size()){
             return (double)(daten.spielverlauf.get(zeitpunkt-1).getBallPosition().distanceSq(daten.spielverlauf.get(zeitpunkt).getBallPosition())/2);
         }
         return 0;

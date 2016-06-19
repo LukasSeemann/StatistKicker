@@ -29,7 +29,7 @@ import javafx.scene.text.Text;
  * @author Lukas
  */
 public class GUI implements Initializable{
-    Spieldaten spieldaten;	
+	
     public Spieldaten getSpieldaten() {
         return spieldaten;
     }
@@ -37,7 +37,7 @@ public class GUI implements Initializable{
     public void setSpieldaten(Spieldaten spieldaten) {
 	this.spieldaten = spieldaten;
     }
-   
+    Spieldaten spieldaten = new TxtFileReader().readTxtFile();
     int z = 0;
     int hm = 0;
     
@@ -54,24 +54,26 @@ public class GUI implements Initializable{
   
     @FXML
     protected void vorButtonPressed() {  
-        z++; 
-        //Zustand aktuell = spieldaten.spielverlauf.get(z);
-        updateStatistics();
-        //updateBall(aktuell);
-        Ball.setLayoutX(Ball.getLayoutX()+Math.random()*10);
-        Ball.setLayoutY(Ball.getLayoutY()-Math.random()*10);
-        Time.setText("Zeitpunkt: "+z+" Sekunden");
+        if (z<spieldaten.spielverlauf.size()){
+            Zustand aktuell = spieldaten.spielverlauf.get(z);
+            updateStatistics();
+            updateBall(aktuell);
+            z++; 
+            //Ball.setLayoutX(Ball.getLayoutX()+Math.random()*10);
+            //Ball.setLayoutY(Ball.getLayoutY()-Math.random()*10);
+            Time.setText("Zeitpunkt: "+z+" Sekunden");
+        }
     }
     
     @FXML
     protected void zurückButtonPressed() {     
         if (z>0){
         z--;
-        //Zustand aktuell = spieldaten.spielverlauf.get(z);
+        Zustand aktuell = spieldaten.spielverlauf.get(z);
         updateStatistics();
-        //updateBall(aktuell);
-        Ball.setLayoutX(Ball.getLayoutX()-Math.random()*10);
-        Ball.setLayoutY(Ball.getLayoutY()+Math.random()*10);
+        updateBall(aktuell);
+        //Ball.setLayoutX(Ball.getLayoutX()-Math.random()*10);
+        //Ball.setLayoutY(Ball.getLayoutY()+Math.random()*10);
         Time.setText("Zeitpunkt: "+z+" Sekunden");
         }
     }
@@ -83,23 +85,29 @@ public class GUI implements Initializable{
     }
     public void updateStatistics(){
          //S1.setText(""+spieldaten.statGen.getAnzahlSchuesse(false, z));
-         S1.setText(""+z);  
-         SG1.setText(""+z);
+         //S1.setText(""+z);  
+         //SG1.setText(""+z);
          //S2.setText(""+spieldaten.statGen.getAnzahlSchuesse(true, z));
-         S2.setText(""+z);
-         SG2.setText(""+z);
-         //Spielstand.setText(""+spieldaten.statGen.getSpielstand(z));
-         Spielstand.setText("1 - 1");
-         //Speed.setText(""+spieldaten.statGen.geschwindigkeit(z));
-         Speed.setText("" + (z+3.24));
+         //S2.setText(""+z);
+         //SG2.setText(""+z);
+         Spielstand.setText(""+spieldaten.statGen.getSpielstand(z));
+         //Spielstand.setText("1 - 1");
+         Speed.setText(""+spieldaten.statGen.geschwindigkeit(z));
+         //Speed.setText("" + (z+3.24));
     }
     
     @FXML
     public void HeatmapButton(){
+        int max = 1;
+        for (int i=0; i<40; i++){
+                for (int j=0; j<20; j++){
+                  if (spieldaten.statGen.generateHeatmap()[j][i]>max){max = spieldaten.statGen.generateHeatmap()[j][i];}  
+                }
+        }
         if(hm==0){
             for (int i=0; i<40; i++){
                 for (int j=0; j<20; j++){
-                    Heatmap.add(new Rectangle(14,14,new Color(0.2,0.4,0.5,0.50)), i, j);
+                    Heatmap.add(new Rectangle(14,14,new Color(1,0,0,(double)spieldaten.statGen.generateHeatmap()[j][i]/max)), i, j);
                 }
             }
             hm = 1;

@@ -21,9 +21,6 @@ public class TxtFileReader {
     Stange[] stangePosition;
     Point ballPosition;
 
-    public TxtFileReader(){
-        readTxtFile();
-    }
     
     /**
      * Liest die Datei Zeile für Zeile ein und ruft andere Methoden auf um ein Spielstandsobjekt zu erstellen
@@ -50,8 +47,14 @@ public class TxtFileReader {
                 }else if(line.startsWith("Werte")){
                     System.out.println("Nun werden die Zustände eingelesen");
                 }else{
-                    leseNormal(line);
-                    createNewZustand(i, zustaende);
+                   leseNormal(line);
+                   Zustand zustand = new Zustand();
+                   zustand.setZeitpunkt(i);
+                   zustand.setBallPosition(getBallPosition());
+                   zustand.setStangePosition(getStangePosition());
+                   zustand.setToreTeam1(getToreTeam1());
+                   zustand.setToreTeam2(getToreTeam2());
+                   zustaende.add(zustand);
                 }
             }
             // Testlauf
@@ -62,25 +65,16 @@ public class TxtFileReader {
                 zustaende.get(i).getToreTeam2()+" Zeitpunkt: "+
                 zustaende.get(i).getZeitpunkt()+" Stangenpositionen: "+
                 zustaende.get(i).getStangePosition()
-                );    
+                );
             }
             Spieldaten spieldaten = new Spieldaten();
             spieldaten.setSpielverlauf(zustaende);
+            spieldaten.setStatGen(new StatistikGenerator(spieldaten));
+            return spieldaten;
         }catch(FileNotFoundException fnoe){
                 fnoe.printStackTrace();
         }
         return null;
-    }
-
-    private void createNewZustand(int i, List<Zustand> zustaende) {
-        // Erstellung eines Zustand Objektes (in eigene Methode?)
-        Zustand zustand = new Zustand();
-        zustand.setZeitpunkt(i);
-        zustand.setBallPosition(getBallPosition());
-        zustand.setStangePosition(getStangePosition());
-        zustand.setToreTeam1(getToreTeam1());
-        zustand.setToreTeam2(getToreTeam2());
-        zustaende.add(zustand);
     }
     
     /**
