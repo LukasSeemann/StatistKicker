@@ -13,16 +13,16 @@ package statistkickercode;
 import java.awt.Point;
 
 public class Zustand {
-	Point[] stangePosition;
+	Stange[] stangePosition;
 	Point ballPosition;
 	int zeitpunkt;
 	int toreTeam1;
 	int toreTeam2;
 	
-	public Point[] getStangePosition() {
+	public Stange[] getStangePosition() {
 		return stangePosition;
 	}
-	public void setStangePosition(Point[] stangePosition) {
+	public void setStangePosition(Stange[] stangePosition) {
 		this.stangePosition = stangePosition;
 	}
 	public Point getBallPosition() {
