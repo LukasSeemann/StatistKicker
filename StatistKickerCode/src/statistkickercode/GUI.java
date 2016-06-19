@@ -1,3 +1,4 @@
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -14,10 +15,14 @@ import javafx.collections.ObservableList;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Group;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.GridPane;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
+import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 /**
  *
@@ -32,9 +37,9 @@ public class GUI implements Initializable{
     public void setSpieldaten(Spieldaten spieldaten) {
 	this.spieldaten = spieldaten;
     }
-    
    
     int z = 0;
+    int hm = 0;
     
     @FXML Circle Ball;
     @FXML Text Time;
@@ -44,6 +49,8 @@ public class GUI implements Initializable{
     @FXML Text SG2;
     @FXML Text Spielstand;
     @FXML Text Speed;
+    @FXML GridPane Heatmap;
+    @FXML Rectangle r;
   
     @FXML
     protected void vorButtonPressed() {  
@@ -87,8 +94,25 @@ public class GUI implements Initializable{
          Speed.setText("" + (z+3.24));
     }
     
+    @FXML
+    public void HeatmapButton(){
+        if(hm==0){
+            for (int i=0; i<40; i++){
+                for (int j=0; j<20; j++){
+                    Heatmap.add(new Rectangle(14,14,new Color(0.2,0.4,0.5,0.50)), i, j);
+                }
+            }
+            hm = 1;
+        }
+        else{
+            Heatmap.getChildren().clear();
+            hm = 0;
+        }
+    }
+    
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         
     }
+
 }
