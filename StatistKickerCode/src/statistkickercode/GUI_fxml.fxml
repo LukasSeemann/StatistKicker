@@ -51,7 +51,7 @@
                      <center>
                         <Group BorderPane.alignment="CENTER">
                            <children>
-                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1fff53a7" height="280.0" stroke="BLACK" strokeType="INSIDE" width="560.0" />
+                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#40ff0071" height="280.0" stroke="BLACK" strokeType="INSIDE" width="560.0" />
                               <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1fff4300" height="92.0" layoutY="94.0" stroke="BLACK" strokeType="INSIDE" width="42.0" />
                               <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1fff4300" height="92.0" layoutX="518.0" layoutY="94.0" stroke="BLACK" strokeType="INSIDE" width="42.0" />
                               <Line endY="280.0" layoutX="280.0" />
@@ -86,7 +86,7 @@
                         </Button>
                      </right>
                      <bottom>
-                        <Text fx:id="Time" boundsType="VISUAL" strokeType="OUTSIDE" strokeWidth="0.0" text="Zeitpunkt: 0" wrappingWidth="126.13671875" BorderPane.alignment="CENTER">
+                        <Text fx:id="Time" boundsType="VISUAL" strokeType="OUTSIDE" strokeWidth="0.0" text="Zeitpunkt: 0 Sekunden" wrappingWidth="186.8369140625" BorderPane.alignment="CENTER">
                            <font>
                               <Font size="14.0" />
                            </font>

@@ -45,31 +45,29 @@ public class GUI implements Initializable{
     @FXML Text Spielstand;
     @FXML Text Speed;
   
-    
     @FXML
-    protected void vorButtonPressed() {
-        
+    protected void vorButtonPressed() {  
         z++; 
         //Zustand aktuell = spieldaten.spielverlauf.get(z);
         updateStatistics();
         //updateBall(aktuell);
         Ball.setLayoutX(Ball.getLayoutX()+Math.random()*10);
         Ball.setLayoutY(Ball.getLayoutY()-Math.random()*10);
-        Time.setText("Zeitpunkt: "+z);    
+        Time.setText("Zeitpunkt: "+z+" Sekunden");
     }
     
     @FXML
-    protected void zurückButtonPressed() {
-        z--; 
+    protected void zurückButtonPressed() {     
+        if (z>0){
+        z--;
         //Zustand aktuell = spieldaten.spielverlauf.get(z);
         updateStatistics();
         //updateBall(aktuell);
         Ball.setLayoutX(Ball.getLayoutX()-Math.random()*10);
         Ball.setLayoutY(Ball.getLayoutY()+Math.random()*10);
-        Time.setText("Zeitpunkt: "+z);
-        
+        Time.setText("Zeitpunkt: "+z+" Sekunden");
+        }
     }
-
     
     @FXML
     public void updateBall(Zustand akt){
@@ -77,15 +75,15 @@ public class GUI implements Initializable{
         Ball.setLayoutY(akt.ballPosition.getY());
     }
     public void updateStatistics(){
-         S1.setText(""+z);
          //S1.setText(""+spieldaten.statGen.getAnzahlSchuesse(false, z));
+         S1.setText(""+z);  
          SG1.setText(""+z);
-         S2.setText(""+z);
          //S2.setText(""+spieldaten.statGen.getAnzahlSchuesse(true, z));
+         S2.setText(""+z);
          SG2.setText(""+z);
          //Spielstand.setText(""+spieldaten.statGen.getSpielstand(z));
          Spielstand.setText("1 - 1");
-         //Speed.setText(""+spieldaten.statGen.getBallgeschwindigkeit(z));
+         //Speed.setText(""+spieldaten.statGen.geschwindigkeit(z));
          Speed.setText("" + (z+3.24));
     }
     
